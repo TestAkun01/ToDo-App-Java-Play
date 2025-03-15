@@ -1,0 +1,20 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Endpoint untuk ToDo
+GET     /todos                      controllers.ToDoController.getTodos
+GET     /todos/search               controllers.ToDoController.searchTodos(query: String ?= "", priority: String ?= "", categoryId: Long ?= -1, completed: Boolean ?= false)
+POST    /todos                      controllers.ToDoController.addTodo(request: play.mvc.Http.Request)
+PUT     /todos/:id                  controllers.ToDoController.updateTodo(id: Long, request: play.mvc.Http.Request)
+DELETE  /todos/:id                  controllers.ToDoController.deleteTodo(id: Long)
+
+# Endpoint untuk Category
+GET     /categories                 controllers.CategoryController.getAll
+GET     /categories/:id             controllers.CategoryController.getById(id: Long)
+POST    /categories                 controllers.CategoryController.add(request: play.mvc.Http.Request)
+PUT     /categories/:id             controllers.CategoryController.update(id: Long, request: play.mvc.Http.Request)
+DELETE  /categories/:id             controllers.CategoryController.delete(id: Long)
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
